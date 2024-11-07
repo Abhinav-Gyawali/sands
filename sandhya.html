@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dawn</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: #1E3A4C;
+            line-height: 1.6;
+            
+            
+        }
+
+        overlays {
+            position: fixed;
+            max-width: 100vw;
+            z-index: -1;
+            display:flex;
+        }
+
+        overlays .floral-overlay-bottom {
+            height:70vh;
+            width:auto;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 0;
+            right:0;
+        }
+
+        header {
+            top: 0;
+            z-index: 1;
+            width: 100vw;
+            position: fixed;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #1E3A4C;
+        }
+
+        header span.title {
+            font-size: 1.7rem;
+            font-weight: bold;
+        }
+
+        header p.tagline {
+            font-size: 0.7rem;
+            font-weight: 200;
+        }
+        main{
+          display: flex;
+          flex-direction: column;
+        }
+        section {
+            height: 100vh;
+        }
+
+        section:first-of-type {
+            padding: 20vh 0 0 22vw;
+            display: block;
+        }
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            font-family: "Roboto", Sans-Serif;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        
+        .main-nav{
+          width:700px;
+          justify-content: center;
+          display:flex;
+          flex-wrap: wrap;
+          column-gap: 80px;
+          row-gap: -75px;
+        }
+        .main-nav li{
+          width:190px;
+          height:190px;
+          aspect-ratio: 1;
+          list-style: none;
+          transform:rotate(45deg);
+          border-radius:5px;
+          position:relative;
+          overflow:hidden;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          
+        }
+        .main-nav li .portrait{
+          width:145%;
+          height:145%;
+          position:absolute;
+          z-index: -1;
+          transform: rotate(-45deg);
+        }
+        
+        .main-nav .bg {
+          z-index:1;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1; /* Place overlay above the background */
+          width:100%;
+          height:100%;
+          transition: opacity 0.3s ease;
+          opacity:0.8;
+        }
+        
+        .main-nav .bg:hover{
+          opacity:0;
+        }
+        
+        @media(max-width:720px){
+          .main-nav{
+          width:200px;
+            
+          }
+          overlays .floral-overlay-bottom {
+            width: 100vw;
+            height:auto;
+        }
+        }
+        
+    </style>
+    <base href="sands/">
+</head>
+
+<body>
+    <overlays>
+        <img class="floral-overlay-bottom" src="overlay.png" />
+    </overlays>
+    <header>
+        <span class="title">ANTHOPHILE</span>
+        <p class="tagline">Empowering Your <strong>Floral</strong> Journey</p>
+    </header>
+    <main>
+    <section>
+        <div class="hero">
+            <p id="first">Being <span style="color:pink;font-size:3.5rem;">Sands'</span></p>
+            <p id="second">& exploring</p>
+            <p style="color:green;" id="third">Fauna!</p>
+        </div>
+    </section>
+    <section>
+        <ul class="main-nav">
+            <li class="item1">
+                <div class="bg"></div>
+                <div class="portrait"></div>
+            </li>
+            <li class="item2">
+                <div class="bg"></div>
+                <div class="portrait"></div>
+            </li>
+            <li class="item3">
+                <div class="bg"></div>
+                <div class="portrait"></div>
+            </li>
+            <li class="item4">
+                <div class="bg"></div>
+                <div class="portrait"></div>
+            </li>
+        </ul>
+    </section>
+    
+    </main>
+    <script>
+const navItems = document.querySelectorAll('.main-nav li .portrait');
+
+// Define an array of image URLs for each li element
+const portraits = [
+    'url("portrait1.jpg")',  // Image for the first li
+    'url("portrait2.jpg")',  // Image for the second li
+    'url("portrait3.jpg")',  // Image for the third li
+    'url("portrait4.jpg")'   // Image for the fourth li
+];
+
+// Loop through each li element and set the background image
+navItems.forEach((item, index) => {
+    item.style.backgroundImage = portraits[index];
+    item.style.backgroundSize = 'cover';  // Optional: Ensure the image covers the li element
+    item.style.backgroundPosition = 'center';  // Center the background image
+});
+    </script>
+
+</body>
+
+</html>
